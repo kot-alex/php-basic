@@ -1,0 +1,15 @@
+#menu {
+  position: fixed;
+  background: white;
+  top: 0;
+  padding: 10px 0;
+  width: 100%;
+}
+
+#content {
+  margin-top: 40px;
+}
+
+#content img {
+  width: 150px;
+}
