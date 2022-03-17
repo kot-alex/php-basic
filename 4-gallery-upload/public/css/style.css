@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#menu {
+  background: white;
+  padding: 10px;
+}
+#menu a {
+  text-decoration: none;
+}
+
+#content {
+  padding: 0 10px;
+}
+
+.catalog-img {
+  width: 100px;
+}
+
+.gallery-images {
+  margin: 10px 0;
+  padding: 10px;
+  background: #4a4a4a;
+}
+
+.gallery-preview img {
+  margin: 5px;
+  border: 3px solid #fff;
+  width: 150px;
+  height: 100px;
+}
+
+.gallery-preview:hover img {
+  border: 3px solid #034f80;
+}
