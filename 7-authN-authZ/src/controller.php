@@ -4,11 +4,10 @@ function prepareVariables($page)
 {
     $session = session_id();
     $action = $_POST['action'] ?? '';
-    $allow = 'false';
     $params['menu'] = getMenu(getCount($session));
     $params['layout'] = 'main';
-    $params['name'] = getUser();
     $params['auth'] = isAuth();
+    $params['name'] = getUser();
 
     switch ($page) {
         case 'install':
@@ -16,19 +15,26 @@ function prepareVariables($page)
             die();
 
         case 'login':
-            if ($action == 'login') {
-                $login = $_POST['login'];
-                $pass = $_POST['pass'];
-                if (auth($login, $pass)) {
-                    header('Location: /');
-                    die();
-                } else {
-                    die('wrong login/pass');
+            $login = $_POST['login'];
+            $pass = $_POST['pass'];
+            if (auth($login, $pass)) {
+                if (isset($_POST['save'])) {
+                    $hash = uniqid(rand(), true);
+                    updateSessionHash($hash);
+                    setcookie('hash', $hash, time() + 3600, '/');
                 }
+                header('Location:' . $_SERVER['HTTP_REFERER']);
+                die();
+            } else {
+                die('wrong login/password');
             }
             break;
 
         case 'logout':
+            setcookie('hash', '', time() - 1, '/');
+            session_regenerate_id();
+            session_destroy();
+            header('Location:' . $_SERVER['HTTP_REFERER']);
             break;
 
         case 'index':

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:8889
--- Время создания: Апр 15 2022 г., 13:11
+-- Время создания: Апр 17 2022 г., 23:14
 -- Версия сервера: 5.7.34
 -- Версия PHP: 7.4.21
 
@@ -104,7 +104,7 @@ CREATE TABLE `gallery_img` (
 
 INSERT INTO `gallery_img` (`id`, `title`, `views`) VALUES
 (250, '01.jpg', 8),
-(251, '02.jpg', 7),
+(251, '02.jpg', 8),
 (252, '03.jpg', 2),
 (253, '04.jpg', 0),
 (254, '05.jpg', 0),
@@ -128,17 +128,17 @@ INSERT INTO `gallery_img` (`id`, `title`, `views`) VALUES
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `login` varchar(255) NOT NULL,
-  `pass` text NOT NULL,
-  `hash` text NOT NULL
+  `pass_hash` varchar(255) NOT NULL,
+  `session_hash` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `pass`, `hash`) VALUES
-(1, 'admin', '123', ''),
-(2, 'user', '321', '');
+INSERT INTO `users` (`id`, `login`, `pass_hash`, `session_hash`) VALUES
+(1, 'admin', '$2y$10$vMgZ5y7YVyG.paqOz6ni2u3BvR.zNtOcCeIz2vtr6TS3S0yPlk2bu', '2131749139625c9ee545f585.84850809'),
+(2, 'user', '$2y$10$vf91rqwFogqJv7TW7VWbiu0CHsRT9zaxCN946MEHyTkXQhBU.QClW', '926383841625c6d9a3e3fc4.38703054');
 
 --
 -- Индексы сохранённых таблиц
@@ -183,7 +183,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `catalog`
@@ -195,7 +195,7 @@ ALTER TABLE `catalog`
 -- AUTO_INCREMENT для таблицы `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `gallery_img`

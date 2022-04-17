@@ -40,5 +40,5 @@ function getMenu($count)
 
 function getCount($session)
 {
-    return getOneResult("SELECT SUM(qty) as count FROM cart WHERE session_id='$session'")['count'];
+    return getOneResult("SELECT SUM(qty) as `count` FROM cart WHERE `session_id`='$session'")['count'];
 }

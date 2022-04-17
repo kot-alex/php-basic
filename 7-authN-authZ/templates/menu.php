@@ -1,11 +1,14 @@
 <div class="menu">
-    <?php if ($allow) : ?>
-        Welcome <?= $login ?> <a href="?logout">[Sign out]</a>
+    <?php if ($auth) : ?>
+        <form action="logout" method="POST">
+            Welcome <?= $name ?>
+            <input type="submit" value="Sign out">
+        </form>
     <?php else : ?>
-        <form action="" method="POST">
-            <input type="text" hidden name="action" value="login">
-            <input type="text" name="login">
-            <input type="password" name="password">
+        <form action="login" method="POST">
+            <input type="text" name="login" value="admin">
+            <input type="password" name="pass" value="123">
+            Save? <input type='checkbox' name='save'>
             <input type="submit" value="Sign in">
         </form>
     <?php endif; ?>
